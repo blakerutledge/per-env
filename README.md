@@ -1,5 +1,5 @@
 ### blakerutledge fork
-- Include dependency on dotenv to use .env file with per-env
+- Include dependency on dotenv to use  `.env` file
 
 
 # per-env
@@ -71,8 +71,16 @@
 
 ### Installation
 
-```shell
+```shell:
 $ npm install --save https://github.com/blakerutledge/per-env/tarball/master
+
+or 
+$ yarn add https://github.com/blakerutledge/per-env/tarball/master
+
+manually add to package.json:
+...
+"per-env": "git+https://github.com/blakerutledge/per-env",
+...
 ```
 
 
