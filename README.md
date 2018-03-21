@@ -71,17 +71,11 @@
 
 ### Installation
 
-```shell:
-$ npm install --save https://github.com/blakerutledge/per-env/tarball/master
+npm:
+```$ npm install --save https://github.com/blakerutledge/per-env/tarball/master```
 
-or 
-$ yarn add https://github.com/blakerutledge/per-env/tarball/master
-
-manually add to package.json:
-...
-"per-env": "git+https://github.com/blakerutledge/per-env",
-...
-```
+yarn:
+```$ yarn add https://github.com/blakerutledge/per-env/tarball/master```
 
 
 ### License
