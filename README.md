@@ -1,5 +1,9 @@
 # per-env
 
+# blakerutledge fork
+- [x] Include dependency on dotenv to use .env file with per-env
+
+
 > Clean up your `package.json` with per-`NODE_ENV` npm scripts.
 
 [![travis build](https://img.shields.io/travis/ericclemmons/per-env.svg)](https://travis-ci.org/ericclemmons/per-env)
