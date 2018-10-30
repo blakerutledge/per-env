@@ -4,9 +4,11 @@ var pkg = require(process.cwd() + "/package.json");
 var spawnSync = require("child_process").spawnSync;
 var fs = require('fs');
 var path = require('path');
-var use_dot_env = true
 
-if ( true ) {
+var key = process.argv.slice( 2, 3 )[ 0 ] || 'NODE_ENV';
+
+var use_dot_env = true
+if ( use_dot_env ) {
   var dotenv = null
   var cwd = process.cwd()
   var done = false
@@ -28,14 +30,17 @@ if ( true ) {
 
 
 // Default to "development"
-var NODE_ENV = process.env.NODE_ENV || "development";
+var NODE_ENV = process.env[ key ] || "development";
+
+var env_obj = {}
+env_obj[ key ] = NODE_ENV
 
 var env = Object.assign(
   {},
   // Default NODE_ENV
-  { NODE_ENV: NODE_ENV},
+  env_obj,
   // Override with package.json custom env variables
-  (pkg && pkg["per-env"] && pkg["per-env"][NODE_ENV]) || {},
+  (pkg && pkg["per-env"] && pkg["per-env"][key]) || {},
 
   // Explicit env takes precedence
   process.env
@@ -45,7 +50,7 @@ var command = "npm";
 
 var script = [
   env.npm_lifecycle_event, // e.g. "start"
-  env.NODE_ENV,
+  env[ key ],
 ].join(":"); // e.g. "start:development"
 
 var args = [
