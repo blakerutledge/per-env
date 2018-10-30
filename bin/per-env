@@ -2,23 +2,30 @@
 
 var pkg = require(process.cwd() + "/package.json");
 var spawnSync = require("child_process").spawnSync;
-
+var fs = require('fs');
+var path = require('path');
 var use_dot_env = true
-if ( use_dot_env ) {
+
+if ( true ) {
   var dotenv = null
   var cwd = process.cwd()
   var done = false
   var found = false
-
   while( !done && !found ) {
-    found = fs.existsSync( cwd + ".env" )
-    cwd = cwd.substr(0,cwd.lastIndexOf('/'))
-    done = (cwd.match(/is/g) || []).length <= 1
-    break
+    found = fs.existsSync( path.join( cwd, '.env' ) )
+    if ( !found ) {
+      tmp = cwd.split('/')
+      tmp.pop()
+      cwd = tmp.join('/')
+      done = ( tmp.length <= 1) 
+    }
   }
 
-  if ( found ) dotenv = require('dotenv').load( process.cwd() + ".env" );
+  if ( found ) {
+    dotenv = require('dotenv').config( { path: path.join( cwd, ".env" ) } );
+  }
 }
+
 
 // Default to "development"
 var NODE_ENV = process.env.NODE_ENV || "development";
