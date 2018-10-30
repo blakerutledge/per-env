@@ -1,11 +1,14 @@
 #!/usr/bin/env node
 
+var os = require('os').platform()
 var pkg = require(process.cwd() + "/package.json");
-var spawnSync = require("child_process").spawnSync;
+var spawnSync = require("cross-spawn").spawn.sync;
 var fs = require('fs');
 var path = require('path');
 
 var key = process.argv.slice( 2, 3 )[ 0 ] || 'NODE_ENV';
+
+var slash = ( os === 'win32' ) ? '\\' : '/'
 
 var use_dot_env = true
 if ( use_dot_env ) {
@@ -16,9 +19,9 @@ if ( use_dot_env ) {
   while( !done && !found ) {
     found = fs.existsSync( path.join( cwd, '.env' ) )
     if ( !found ) {
-      tmp = cwd.split('/')
+      tmp = cwd.split( slash )
       tmp.pop()
-      cwd = tmp.join('/')
+      cwd = tmp.join( slash )
       done = ( tmp.length <= 1) 
     }
   }

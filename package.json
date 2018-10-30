@@ -39,6 +39,7 @@
   },
   "homepage": "https://github.com/ericclemmons/per-env#readme",
   "dependencies": {
-    "dotenv": "^5.0.1"
+    "dotenv": "^5.0.1",
+    "cross-spawn": "6.0.5"
   }
 }
