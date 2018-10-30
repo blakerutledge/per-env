@@ -1,14 +1,24 @@
 ### blakerutledge fork
 - Include dependency on dotenv to use  `.env` file. Walks up the filepath looking for it in case you have a nested type project setup.
 - Add ability to specify a process.env key beside `NODE_ENV`. In npm script, the first argument passed after calling `per-env` overrides the default key.
-```{
-      ...,
-      'main: 'per-env SUB_APP',
-      'main:subapp1': 'node subapp1.js'
-      'main:subapp2': 'node subapp2.js'
-      ...
-    }
-```
+  ```{
+        ...,
+        "build": "per-env",
+        "build:dev": "build dev things",
+        "build:prod": "build prod things",
+        "start": "per-env SUB_APP",
+        "start":subapp1': "node subapp1.js",
+        "start":subapp2': "node subapp2.js"
+        ...
+      }
+  ```
+  in .env file you can have:
+  ```
+  NODE_ENV=dev
+  SUB_APP=subapp1
+  ```
+
+
 
 # per-env
 
