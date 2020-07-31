@@ -59,10 +59,10 @@ var script = [
 var args = [
   "run",
   script
-].concat(
+]/*.concat(
   // Extra arguments after "per-env"
   process.argv.slice(2)
-);
+);*/
 
 var options = {
   cwd: process.cwd(),
